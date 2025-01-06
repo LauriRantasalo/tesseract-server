@@ -37,3 +37,6 @@ RUN /usr/local/bin/yarn build
 FROM base_prod AS prod_build_dist
 WORKDIR /app
 COPY --from=builder /app/dist/index.js /app/dist/*.production.*.js ./dist/
+
+FROM hertzg/tesseract-server:latest
+RUN apk add --no-cache tesseract-ocr-data-fin
